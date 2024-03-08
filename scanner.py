@@ -54,7 +54,7 @@ def stealth_scan(portas, ipAddress):
     portas_abertas = []
     for porta in portas:
         servico = portas_servicos.get(porta, "Serviço não especificado")
-        if verbosidade == VERBOSIDADE_BAIXA:
+        if verbosidade > VERBOSIDADE_BAIXA:
             print(f"Scanning : {ipAddress} | Port : {porta}")
         response = sr1(IP(dst=ipAddress)/TCP(dport=porta, flags="S"), timeout=1, verbose=0)
         if response and response.haslayer(TCP):
